@@ -1,0 +1,416 @@
+<?php
+include('../session.php');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    McDonald's
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <!--<img src="../assets/img/icono.png">-->
+          </div>
+        </a>
+        <a href="#" class="simple-text logo-normal">
+          McDonald's
+        </a>
+        <div>
+          Usuario: <b><?php echo $_SESSION['login_user']; ?>
+        </div>
+        <div>
+          <p><a href="../logout.php">Cerrar sesión</a></p>
+        </div>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="active ">
+            <a href="./c1_codificaciones.php">
+              <!--<i class="nc-icon nc-badge"></i>-->
+              <p>Codificaciones</p>
+            </a>
+          </li>
+          <li>
+            <a href="./c2_informes.php">
+              <!--<i class="nc-icon nc-badge"></i>-->
+              <p>Informes</p>
+            </a>
+          </li>
+          <li>
+            <a href="./c3_maestros.php">
+              <!--<i class="nc-icon nc-badge"></i>-->
+              <p>Gestion maestros</p>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="#">Codificaciones</a>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <!-- <div class="panel-header panel-header-sm">  
+</div> -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-user">
+              <div class="card-header">
+
+              </div>
+              <div class="card-body">
+                <form action="../models/a1_malta.php" method="post">
+
+                  <div class="row">
+                    <!-- inserción de usuario de sesión -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label></label>
+                        <input type="hidden" class="form-control" placeholder="" value="<?php echo $_SESSION['login_user']; ?>" name="usuario">
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6>Niveles</h6>
+                  <div class="row">
+
+                    <form action="../models/a1_malta.php" method="post">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Codificación nivel 1</label>
+                          <!--<input type="text" class="form-control" placeholder="" value="" name="codificacionnivel1">-->
+                          <input type="text" class="form-control" placeholder="" value="" name="codificacionnivel1">
+                          <select class="form-control" name="codificacionnivel1" id="codificacionnivel1">
+                            <option value="0">Seleccione:</option>
+                            <?php
+                            require_once('../controllers/conectardb.php');
+                            $query = $conn->query("SELECT * FROM nivel_1");
+                            while ($valores = mysqli_fetch_array($query)) {
+                              echo '<option value="' . $valores[ID] . '">' . $valores[DESCRIPCION] . '</option>';
+                            }
+                            ?>
+                          </select>
+                          <div class="row">
+                            <div class="update ml-auto mr-auto">
+                              <button type="submit" class="btn btn-primary btn-round">Grabar</button>
+                            </div>
+                          </div>
+                          <?php
+                          /* para visualización en textarea
+                              require_once ('../controllers/conectardb.php');
+                              $query = $conn -> query ("SELECT * FROM nivel_1");
+                              while ($valores=mysqli_fetch_array($query))
+                                {
+                                  echo '<textarea class="form-control textarea" name="comentarioscodificacion">' . $valores['DESCRIPCION'] . '</textarea>';
+                                }*/
+
+                          /*require_once ('../controllers/conectardb.php');
+                              $query = $conn -> query ("SELECT * FROM nivel_1");
+                              echo '<textarea class="form-control textarea" name="comentarioscodificacion">';
+                              while ($valores=mysqli_fetch_array($query))
+                                {
+                                   $valores['DESCRIPCION'];
+                                }
+                              echo '</textarea>';*/
+                          ?>
+
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label>Estado asociado</label>
+                            <select class="form-control" name="estadoasociado" id="estadoasociado">
+                              <option value="0">Seleccione:</option>
+                              <?php
+                              require_once('../controllers/conectardb.php');
+                              $query = $conn->query("SELECT * FROM estado");
+                              while ($valores = mysqli_fetch_array($query)) {
+                                echo '<option value="' . $valores[ID] . '">' . $valores[DESCRIPCION] . '</option>';
+                              }
+                              ?>
+                            </select>
+                          </div>
+                        </div>
+                    </form>
+                  </div>
+
+
+                  <div class="col-md-3">
+                    <form action="../models/a1_malta.php" method="post">
+                      <div class="form-group">
+                        <label>Codificación nivel 2</label>
+                        <input type="text" class="form-control" placeholder="" value="" name="codificacionnivel2">
+                        <select class="form-control" name="codificacionnivel2" id="codificacionnivel1">
+                          <option value="0">Seleccione:</option>
+                          <?php
+                          require_once('../controllers/conectardb.php');
+                          $query = $conn->query("SELECT * FROM nivel_2");
+                          while ($valores = mysqli_fetch_array($query)) {
+                            echo '<option value="' . $valores[ID] . '">' . $valores[DESCRIPCION] . '</option>';
+                          }
+                          ?>
+                        </select>
+                        <div class="row">
+                          <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Grabar</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Estado asociado</label>
+                          <select class="form-control" name="estadoasociado" id="estadoasociado">
+                            <option value="0">Seleccione:</option>
+                            <?php
+                            require_once('../controllers/conectardb.php');
+                            $query = $conn->query("SELECT * FROM estado");
+                            while ($valores = mysqli_fetch_array($query)) {
+                              echo '<option value="' . $valores[ID] . '">' . $valores[DESCRIPCION] . '</option>';
+                            }
+                            ?>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+
+                  <div class="col-md-3">
+                    <form action="../models/a1_malta.php" method="post">
+                      <div class="form-group">
+                        <label>Codificación nivel 3</label>
+                        <input type="text" class="form-control" placeholder="" value="" name="codificacionnivel3">
+                        <select class="form-control" name="codificacionnivel3" id="codificacionnivel3">
+                          <option value="0">Seleccione:</option>
+                          <?php
+                          require_once('../controllers/conectardb.php');
+                          $query = $conn->query("SELECT * FROM nivel_3");
+                          while ($valores = mysqli_fetch_array($query)) {
+                            echo '<option value="' . $valores[ID] . '">' . $valores[DESCRIPCION] . '</option>';
+                          }
+                          ?>
+                        </select>
+                        <div class="row">
+                          <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Grabar</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Estado asociado</label>
+                          <select class="form-control" name="estadoasociado" id="estadoasociado">
+                            <option value="0">Seleccione:</option>
+                            <?php
+                            require_once('../controllers/conectardb.php');
+                            $query = $conn->query("SELECT * FROM estado");
+                            while ($valores = mysqli_fetch_array($query)) {
+                              echo '<option value="' . $valores[ID] . '">' . $valores[DESCRIPCION] . '</option>';
+                            }
+                            ?>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+
+                  <div class="col-md-3">
+                    <form action="../models/a1_malta.php" method="post">
+                      <div class="form-group">
+                        <label>Codificación nivel 4</label>
+                        <input type="text" class="form-control" placeholder="" value="" name="codificacionnivel4">
+                        <select class="form-control" name="codificacionnivel4" id="codificacionnivel4">
+                          <option value="0">Seleccione:</option>
+                          <?php
+                          require_once('../controllers/conectardb.php');
+                          $query = $conn->query("SELECT * FROM nivel_4");
+                          while ($valores = mysqli_fetch_array($query)) {
+                            echo '<option value="' . $valores[ID] . '">' . $valores[DESCRIPCION] . '</option>';
+                          }
+                          ?>
+                        </select>
+                        <div class="row">
+                          <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Grabar</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Estado asociado</label>
+                          <select class="form-control" name="estadoasociado" id="estadoasociado">
+                            <option value="0">Seleccione:</option>
+                            <?php
+                            require_once('../controllers/conectardb.php');
+                            $query = $conn->query("SELECT * FROM estado");
+                            while ($valores = mysqli_fetch_array($query)) {
+                              echo '<option value="' . $valores[ID] . '">' . $valores[DESCRIPCION] . '</option>';
+                            }
+                            ?>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+
+                </form>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer footer-black  footer-white ">
+          <div class="container-fluid">
+            <div class="row">
+              <nav class="footer-nav">
+                <ul>
+                  <li>
+                    <a href="#" target="_blank">By Edward</a>
+                  </li>
+                </ul>
+              </nav>
+              <div class="credits ml-auto">
+                <span class="copyright">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear())
+                  </script>
+                </span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chart JS -->
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+</body>
+
+<!-- funcion javascript para llamar nivel 2 a partir de nivel 1-->
+
+<!-- 
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+    $('#codificacionnivel1').val(0);
+		recargarLista();
+
+		$('#codificacionnivel1').change(function(){
+			recargarLista();
+		});
+	})
+</script>
+<script type="text/javascript">
+	function recargarLista(){
+		$.ajax({
+			type:"POST",
+			url:"../models/a1_malta_obtener_nivel_2.php",
+			data:"continente=" + $('#codificacionnivel1').val(),
+			success:function(r){
+				$('#select2lista').html(r);
+			}
+		});
+	}
+</script> -->
+
+<script language="javascript">
+  $(document).ready(function() {
+    $("#codificacionnivel1").change(function() {
+
+      //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
+
+      $("#codificacionnivel1 option:selected").each(function() {
+        id_departamento_ = $(this).val();
+        $.post("../models/a1_malta_obtener_nivel_2.php", {
+          id_departamento: id_departamento_
+        }, function(data) {
+          $("#codificacionnivel2").html(data);
+        });
+      });
+    })
+  });
+</script>
+<script language="javascript">
+  $(document).ready(function() {
+    $("#codificacionnivel1").change(function() {
+
+      //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
+
+      $("#codificacionnivel1 option:selected").each(function() {
+        id_departamento_ = $(this).val();
+        $.post("../models/a1_malta_obtener_nivel_3.php", {
+          id_departamento: id_departamento_
+        }, function(data) {
+          $("#codificacionnivel2").html(data);
+        });
+      });
+    })
+  });
+  // prueba con nivel 2 para mostrar id en nivel 1
+  /*$(document).ready(function () {
+      $("#codificacionnivel2").change(function () {
+
+          //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
+
+          $("#codificacionnivel2 option:selected").each(function () {
+              id_departamento_ = $(this).val();
+              $.post("../models/a1_malta_obtener_nivel_2.php", {id_departamento: id_departamento_}, function (data) {
+                  $("#codificacionnivel1").html(data);
+              });
+          });
+      })
+  });*/
+</script>
+
+</html>
