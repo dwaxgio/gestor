@@ -80,7 +80,7 @@ include('../session.php');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">Alta</a>
+            <a class="navbar-brand" href="#">Informes</a>
           </div>
         </div>
       </nav>

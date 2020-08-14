@@ -80,7 +80,7 @@ include('../session.php');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">Alta</a>
+            <a class="navbar-brand" href="#">Maestros</a>
           </div>
         </div>
       </nav>
@@ -108,108 +108,6 @@ include('../session.php');
                   </div>
                   
                   <h6>Gestión maestros</h6>
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Primer nombre</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="nombre1" required="required">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Segundo nombre</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="nombre2">
-                      </div>
-                    </div>
-                  
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Primer apellido</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="apellido1" required="required">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Segundo apellido</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="apellido2">
-                      </div>
-                    </div>
-
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Documento Identidad</label>
-                        <input type="number" class="form-control" placeholder="" value="" name="dni" required="required">
-                      </div>
-                    </div>
-
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Nacionalidad</label>
-                        <select class="form-control" name="nacionalidad" id="nacionalidad">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM nacionalidad");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-        
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Telefono</label>
-                        <input type="number" class="form-control" placeholder="" value="" name="telefono1">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Telefono opcional</label>
-                        <input type="number" class="form-control" placeholder="" value="" name="telefono2">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codigo postal</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="codigopostal">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Ciudad</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="ciudad">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Dirección</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="direccion">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" placeholder="" value="" name="email">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Idioma</label>
-                        <select class="form-control" name="idioma" id="idioma">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM idioma");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>                    
-                  </div>                    
 
                   <div class="row">
                     <div class="update ml-auto mr-auto">

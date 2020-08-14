@@ -1,12 +1,4 @@
-<?php/*
-En caso de error al cargar en servidor (con el mensaje de los headers ya enviados en login) aplicar lo siguiente
 <?php
-ob_start();
-?>
-// al final del documento:
-<?php
-ob_end_flush();
-?> */
 include("controllers/conectardb.php");
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -33,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="apple-touch-icon-precomposed" href="views/assets_login/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!-- <body background="views\assets_login\img\backgrounds/1.png"> -->
+
 <body background="">
     <!-- Top content -->
     <div class="top-content">
@@ -85,9 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                                 <button type="submit" class="btn"><strong>Iniciar sesión</strong></button>
                             </form>
-                            <!--<div><?php
-                                        echo "<script type='text/javascript'>alert('$error');</script>";
-                                        ?>-->
                         </div>
                     </div>
                 </div>
@@ -101,4 +92,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="views/assets_login/js/jquery.backstretch.min.js"></script>
     <script src="views/assets_login/js/scripts.js"></script>
 </body>
+
 </html>
