@@ -107,7 +107,7 @@ include('../session.php');
                     </div>
                   </div>
                   
-                  <h6>Alta contacto</h6>
+                  <h6>Gestión maestros</h6>
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-group">
@@ -209,154 +209,11 @@ include('../session.php');
                         </select>
                       </div>
                     </div>                    
-                  </div>   
-
-                  <h6>Alta de gestión</h6>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Tipo de gestión</label>
-                        <select class="form-control" name="tipogestion" id="tipogestion">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM nivel_1");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Próximo objetivo</label>
-                        <select class="form-control" name="proximoobjetivo" id="proximoobjetivo">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM gestion_estado");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Canal de entrada</label>
-                        <select class="form-control" name="canalentrada" id="canalentrada">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM canal_entrada");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-                  </div>              
-                  
-                  <h6>Estado de la gestión</h6>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Estado</label>
-                        <select class="form-control" name="estadogestion" id="estadogestion">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM gestion_estado");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>                    
-                  </div>  
-
-                  <h6>Codificación</h6>
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codifiación nivel 1</label>
-                        <!--<input type="text" class="form-control" placeholder="" value="" name="codificacionnivel1">-->
-                        <!--<select class="form-control" name="codificacionnivel1" id="codificacionnivel1">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              /*require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM nivel_1");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }*/
-                            ?>
-                        </select>-->
-                        <select name="codificacionnivel1" id="codificacionnivel1" class="form-control input-md">
-                              <option value="0">Seleccione:</option>
-                              <?php 
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM nivel_1");
-                              while ($row = $query->fetch_assoc()) { ?>
-                                  <option value="<?php echo $row['ID']; ?>"><?php echo $row['DESCRIPCION']; ?></option>
-                              <?php } ?>
-                          </select>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codificación nivel 2</label>
-                        <select name="codificacionnivel2" id="codificacionnivel2" class="form-control input-md">
-                        <option value="0">Seleccione:</option>
-                         </select>
-                        <!--<div id="select2lista"></div> -->
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codificación nivel 3</label>
-                        <select name="codificacionnivel3" id="codificacionnivel3" class="form-control input-md">
-                              <option value="0">Seleccione:</option>
-                              <?php 
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT DISTINCT * FROM nivel_3");
-                              while ($row = $query->fetch_assoc()) { ?>
-                                  <option value="<?php echo $row['ID']; ?>"><?php echo $row['DESCRIPCION']; ?></option>
-                              <?php } ?>
-                          </select>
-                        <!--<div id="select2lista"></div> -->
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codificación nivel 4</label>
-                        <select name="codificacionnivel4" id="codificacionnivel4" class="form-control input-md">
-                              <option value="0">Seleccione:</option>
-                              <?php 
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT DISTINCT * FROM nivel_4");
-                              while ($row = $query->fetch_assoc()) { ?>
-                                  <option value="<?php echo $row['ID']; ?>"><?php echo $row['DESCRIPCION']; ?></option>
-                              <?php } ?>
-                          </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Comentarios codificación</label>
-                        <textarea class="form-control textarea" name="comentarioscodificacion"></textarea>
-                      </div>
-                    </div>
-                  </div>
+                  </div>                    
 
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round">Generar Alta</button>
+                      <button type="submit" class="btn btn-primary btn-round">Registrar cambio</button>
                     </div>
                   </div>
                 </form>

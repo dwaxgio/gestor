@@ -4,6 +4,16 @@ $username = 'b22_24233941';
 $password = 'Dwaxgio123*';
 $database = 'b22_24233941_prestamos';*/
 
+/*
+En caso de error al cargar en servidor (con el mensaje de los headers ya enviados en login) aplicar lo siguiente
+<?php
+ob_start();
+?>
+// al final del documento:
+<?php
+ob_end_flush();
+?> */
+
 $servername = 'localhost';
 $username = 'root';
 $password = '';

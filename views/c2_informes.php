@@ -38,21 +38,21 @@ include('../session.php');
           McDonald's
         </a>
         <div>
-         Usuario: <b><?php echo $_SESSION['login_user']; ?>
+          Usuario: <b><?php echo $_SESSION['login_user']; ?>
         </div>
         <div>
-        <p><a href="../logout.php">Cerrar sesión</a></p>
+          <p><a href="../logout.php">Cerrar sesión</a></p>
         </div>
       </div>
       <div class="sidebar-wrapper">
-        <ul class="nav">        
-          <li>            
+        <ul class="nav">
+          <li>
             <a href="./c1_codificaciones.php">
               <!--<i class="nc-icon nc-badge"></i>-->
               <p>Codificaciones</p>
             </a>
           </li>
-          <li  class="active ">
+          <li class="active ">
             <a href="./c2_informes.php">
               <!--<i class="nc-icon nc-badge"></i>-->
               <p>Informes</p>
@@ -64,7 +64,7 @@ include('../session.php');
               <p>Gestione maestros</p>
             </a>
           </li>
-          
+
         </ul>
       </div>
     </div>
@@ -92,12 +92,12 @@ include('../session.php');
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                
+
               </div>
               <div class="card-body">
                 <form action="../models/a1_malta.php" method="post">
-                
-                  <div class="row">                    
+
+                  <div class="row">
                     <!-- inserción de usuario de sesión -->
                     <div class="col-md-6">
                       <div class="form-group">
@@ -106,257 +106,11 @@ include('../session.php');
                       </div>
                     </div>
                   </div>
-                  
-                  <h6>Alta contacto</h6>
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Primer nombre</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="nombre1" required="required">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Segundo nombre</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="nombre2">
-                      </div>
-                    </div>
-                  
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Primer apellido</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="apellido1" required="required">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Segundo apellido</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="apellido2">
-                      </div>
-                    </div>
 
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Documento Identidad</label>
-                        <input type="number" class="form-control" placeholder="" value="" name="dni" required="required">
-                      </div>
-                    </div>
-
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Nacionalidad</label>
-                        <select class="form-control" name="nacionalidad" id="nacionalidad">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM nacionalidad");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-        
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Telefono</label>
-                        <input type="number" class="form-control" placeholder="" value="" name="telefono1">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Telefono opcional</label>
-                        <input type="number" class="form-control" placeholder="" value="" name="telefono2">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codigo postal</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="codigopostal">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Ciudad</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="ciudad">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Dirección</label>
-                        <input type="text" class="form-control" placeholder="" value="" name="direccion">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" placeholder="" value="" name="email">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Idioma</label>
-                        <select class="form-control" name="idioma" id="idioma">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM idioma");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>                    
-                  </div>   
-
-                  <h6>Alta de gestión</h6>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Tipo de gestión</label>
-                        <select class="form-control" name="tipogestion" id="tipogestion">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM nivel_1");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Próximo objetivo</label>
-                        <select class="form-control" name="proximoobjetivo" id="proximoobjetivo">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM gestion_estado");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Canal de entrada</label>
-                        <select class="form-control" name="canalentrada" id="canalentrada">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM canal_entrada");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-                  </div>              
-                  
-                  <h6>Estado de la gestión</h6>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Estado</label>
-                        <select class="form-control" name="estadogestion" id="estadogestion">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM gestion_estado");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }
-                            ?>
-                        </select>
-                      </div>
-                    </div>                    
-                  </div>  
-
-                  <h6>Codificación</h6>
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codifiación nivel 1</label>
-                        <!--<input type="text" class="form-control" placeholder="" value="" name="codificacionnivel1">-->
-                        <!--<select class="form-control" name="codificacionnivel1" id="codificacionnivel1">
-                          <option value="0">Seleccione:</option>
-                          <?php
-                              /*require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM nivel_1");
-                              while ($valores = mysqli_fetch_array($query)) {
-                               echo '<option value="'.$valores[ID].'">'.$valores[DESCRIPCION].'</option>';
-                              }*/
-                            ?>
-                        </select>-->
-                        <select name="codificacionnivel1" id="codificacionnivel1" class="form-control input-md">
-                              <option value="0">Seleccione:</option>
-                              <?php 
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT * FROM nivel_1");
-                              while ($row = $query->fetch_assoc()) { ?>
-                                  <option value="<?php echo $row['ID']; ?>"><?php echo $row['DESCRIPCION']; ?></option>
-                              <?php } ?>
-                          </select>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codificación nivel 2</label>
-                        <select name="codificacionnivel2" id="codificacionnivel2" class="form-control input-md">
-                        <option value="0">Seleccione:</option>
-                         </select>
-                        <!--<div id="select2lista"></div> -->
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codificación nivel 3</label>
-                        <select name="codificacionnivel3" id="codificacionnivel3" class="form-control input-md">
-                              <option value="0">Seleccione:</option>
-                              <?php 
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT DISTINCT * FROM nivel_3");
-                              while ($row = $query->fetch_assoc()) { ?>
-                                  <option value="<?php echo $row['ID']; ?>"><?php echo $row['DESCRIPCION']; ?></option>
-                              <?php } ?>
-                          </select>
-                        <!--<div id="select2lista"></div> -->
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>Codificación nivel 4</label>
-                        <select name="codificacionnivel4" id="codificacionnivel4" class="form-control input-md">
-                              <option value="0">Seleccione:</option>
-                              <?php 
-                              require_once ('../controllers/conectardb.php');
-                              $query = $conn -> query ("SELECT DISTINCT * FROM nivel_4");
-                              while ($row = $query->fetch_assoc()) { ?>
-                                  <option value="<?php echo $row['ID']; ?>"><?php echo $row['DESCRIPCION']; ?></option>
-                              <?php } ?>
-                          </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Comentarios codificación</label>
-                        <textarea class="form-control textarea" name="comentarioscodificacion"></textarea>
-                      </div>
-                    </div>
-                  </div>
-
+                  <h6>Informes</h6>
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round">Generar Alta</button>
+                      <button type="submit" class="btn btn-primary btn-round">Generar informe</button>
                     </div>
                   </div>
                 </form>
@@ -431,50 +185,52 @@ include('../session.php');
 </script> -->
 
 <script language="javascript">
-        $(document).ready(function () {
-            $("#codificacionnivel1").change(function () {
+  $(document).ready(function() {
+    $("#codificacionnivel1").change(function() {
 
-                //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
+      //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
 
-                $("#codificacionnivel1 option:selected").each(function () {
-                    id_departamento_ = $(this).val();
-                    $.post("../models/a1_malta_obtener_nivel_2.php", {id_departamento: id_departamento_}, function (data) {
-                        $("#codificacionnivel2").html(data);
-                    });
-                });
-            })
-        }); 
-        </script>
-<script  language="javascript">
-        $(document).ready(function () {
-            $("#codificacionnivel1").change(function () {
+      $("#codificacionnivel1 option:selected").each(function() {
+        id_departamento_ = $(this).val();
+        $.post("../models/a1_malta_obtener_nivel_2.php", {
+          id_departamento: id_departamento_
+        }, function(data) {
+          $("#codificacionnivel2").html(data);
+        });
+      });
+    })
+  });
+</script>
+<script language="javascript">
+  $(document).ready(function() {
+    $("#codificacionnivel1").change(function() {
 
-                //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
+      //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
 
-                $("#codificacionnivel1 option:selected").each(function () {
-                    id_departamento_ = $(this).val();
-                    $.post("../models/a1_malta_obtener_nivel_3.php", {id_departamento: id_departamento_}, function (data) {
-                        $("#codificacionnivel2").html(data);
-                    });
-                });
-            })
-        }); 
-        // prueba con nivel 2 para mostrar id en nivel 1
-        /*$(document).ready(function () {
-            $("#codificacionnivel2").change(function () {
+      $("#codificacionnivel1 option:selected").each(function() {
+        id_departamento_ = $(this).val();
+        $.post("../models/a1_malta_obtener_nivel_3.php", {
+          id_departamento: id_departamento_
+        }, function(data) {
+          $("#codificacionnivel2").html(data);
+        });
+      });
+    })
+  });
+  // prueba con nivel 2 para mostrar id en nivel 1
+  /*$(document).ready(function () {
+      $("#codificacionnivel2").change(function () {
 
-                //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
+          //$('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
 
-                $("#codificacionnivel2 option:selected").each(function () {
-                    id_departamento_ = $(this).val();
-                    $.post("../models/a1_malta_obtener_nivel_2.php", {id_departamento: id_departamento_}, function (data) {
-                        $("#codificacionnivel1").html(data);
-                    });
-                });
-            })
-        });*/
-
-       
-    </script>
+          $("#codificacionnivel2 option:selected").each(function () {
+              id_departamento_ = $(this).val();
+              $.post("../models/a1_malta_obtener_nivel_2.php", {id_departamento: id_departamento_}, function (data) {
+                  $("#codificacionnivel1").html(data);
+              });
+          });
+      })
+  });*/
+</script>
 
 </html>
