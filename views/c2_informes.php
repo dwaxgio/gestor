@@ -34,7 +34,7 @@ include('../session.php');
             <!--<img src="../assets/img/icono.png">-->
           </div>
         </a>
-        <a href="#" class="simple-text logo-normal">
+        <a href="./0_seleccion.php" class="simple-text logo-normal">
           McDonald's
         </a>
         <div>

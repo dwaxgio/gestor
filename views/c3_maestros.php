@@ -34,7 +34,7 @@ include('../session.php');
             <!--<img src="../assets/img/icono.png">-->
           </div>
         </a>
-        <a href="#" class="simple-text logo-normal">
+        <a href="./0_seleccion.php" class="simple-text logo-normal">
           McDonald's
         </a>
         <div>
@@ -46,7 +46,7 @@ include('../session.php');
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">        
-          <li  class="active ">            
+          <li>            
             <a href="./c1_codificaciones.php">
               <!--<i class="nc-icon nc-badge"></i>-->
               <p>Codificaciones</p>
