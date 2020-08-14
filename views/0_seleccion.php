@@ -39,17 +39,7 @@ include('../session.php');
 
         <div class="inner-bg">
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 text">
-                        <h1><strong></strong></h1>
-                        <div>
-                            Usuario: <b><?php echo $_SESSION['login_user']; ?>
-                        </div>
-                        <div>
-                            <p><a href="../logout.php">Cerrar sesión</a></p>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3 form-box">
 
@@ -71,6 +61,18 @@ include('../session.php');
 
                         </div>
 
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1><strong></strong></h1>
+                        <div>
+                            Usuario: <b><?php echo $_SESSION['login_user']; ?>
+                        </div>
+                        <div>
+                            <p><a href="../logout.php">Cerrar sesión</a></p>
+                        </div>
                     </div>
                 </div>
 
